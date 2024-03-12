@@ -13,7 +13,7 @@ const main = async () => {
     //     console.log(result)
     
     const getAllFormDB = await prisma.post.findMany();
-    console.log(getAllFormDB)
+    // console.log(getAllFormDB)
 };
 
 main();
