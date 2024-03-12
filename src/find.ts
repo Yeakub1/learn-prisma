@@ -4,22 +4,26 @@ const prisma = new PrismaClient();
 
 const main = async () => {
   // find all
-  const getAllFormDB = await prisma.post.findMany();
+  // const getAllFormDB = await prisma.post.findMany();
 
-  // find frist and find or throw error
-  const findFrist = await prisma.post.findFirstOrThrow({
-    where: {
-      published: false,
-    },
-  });
+  // // find frist and find or throw error
+  // const findFrist = await prisma.post.findFirstOrThrow({
+  //   where: {
+  //     published: false,
+  //   },
+  // });
 
   // find unique and or throw error
   const findUnick = await prisma.post.findUniqueOrThrow({
     where: {
-      id: 1,
+      id: 34,
+    },
+    select: {
+      title: true,
+      authorName: true,
     },
   });
-  console.log({ findFrist });
+  console.log({ findUnick });
 };
 
 main();
