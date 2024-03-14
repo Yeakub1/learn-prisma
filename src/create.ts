@@ -3,47 +3,50 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 const main = async () => {
-  // create single data
-  // const result = await prisma.post.create({
+  // const createUser = await prisma.user.create({
   //   data: {
-  //     title: "This is a Title 3",
-  //     content: "This is a Content 2",
-  //     authorName: "Name Nay 2",
+  //     username: "sayan",
+  //     email: "sayan@gmail.com",
+  //     role: UserRole.user,
   //   },
   // });
-  //   console.log(result)
+  // console.log(createUser);
 
-  const createMany = await prisma.post.createMany({
-    data: [
-      {
-        title: "title 1",
-        content: "This content 1",
-        authorName: "Yeakub",
+  // const createProfile = await prisma.porfile.create({
+  //   data: {
+  //     bio: "I am full stack developer",
+  //     userId: 1,
+  //   },
+  // });
+  // console.log(createProfile);
+
+  // const createCategory = await prisma.category.create({
+  //   data: {
+  //     name: "CSE",
+  //   },
+  // });
+  // console.log(createCategory);
+
+  const createPost = await prisma.post.create({
+    data: {
+      title: "This is a first Title",
+      content: "This is content of the post",
+      authorId: 1,
+      PostCategory: {
+        create: {
+          category: {
+            connect: {
+              id: 1,
+            },
+          },
+        },
       },
-      {
-        title: "title 2",
-        content: "This content 2",
-        authorName: "Sayan",
-      },
-      {
-        title: "title 3",
-        content: "This content 3",
-        authorName: "Anik",
-      },
-      {
-        title: "title 4",
-        content: "This content 4",
-        authorName: "robin",
-      },
-      {
-        title: "title 5",
-        content: "This content 5",
-        authorName: "korim",
-      },
-    ],
+    },
+    include: {
+      PostCategory: true,
+    },
   });
-
-  console.log(createMany);
+  console.log(createPost);
 };
 
 main();
