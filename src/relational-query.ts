@@ -4,14 +4,26 @@ const prisma = new PrismaClient();
 
 const relationaQuery = async () => {
   // fluent api
-  const result = await prisma.user
-    .findUnique({
-      where: {
-        id: 1,
+  // const result = await prisma.user
+  //   .findUnique({
+  //     where: {
+  //       id: 1,
+  //     },
+  //   })
+  //   .porfile();
+  // console.log(result);
+
+  // relational fildes
+  const publishedPostUsers = await prisma.user.findMany({
+    include: {
+      post: {
+        where: {
+          published: true,
+        },
       },
-    })
-    .porfile();
-  console.log(result);
+    },
+  });
+  console.dir(publishedPostUsers, { depth: Infinity });
 };
 
 relationaQuery();
