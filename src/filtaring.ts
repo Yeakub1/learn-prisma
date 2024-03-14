@@ -20,20 +20,43 @@ const filtaring = async () => {
   //     console.log(andFiltaring);
 
   // or filtaring
-  const orFiltaring = await prisma.post.findMany({
+  //   const orFiltaring = await prisma.post.findMany({
+  //     where: {
+  //       OR: [
+  //         {
+  //           title: {
+  //             contains: "Title",
+  //           },
+  //         },
+  //         {
+  //           published: true,
+  //         },
+  //       ],
+  //     },
+  //   });
+  //   console.log(orFiltaring);
+
+  // not filtaring
+  //   const notFiltarign = await prisma.post.findMany({
+  //     where: {
+  //       NOT: [
+  //         {
+  //           title: {
+  //             contains: "this",
+  //           },
+  //         },
+  //       ],
+  //     },
+  //   });
+  //   console.log("Not Filtaring", notFiltarign);
+
+  const startWith = await prisma.user.findMany({
     where: {
-      OR: [
-        {
-          title: {
-            contains: "Title",
-          },
-        },
-        {
-          published: true,
-        },
-      ],
+      email: {
+        startsWith: "s",
+      },
     },
   });
-  console.log(orFiltaring);
+  console.log(startWith);
 };
 filtaring();
