@@ -31,15 +31,19 @@ const main = async () => {
     data: {
       title: "This is a first Title",
       content: "This is content of the post",
-      authorId: 1,
+      authorId: 3,
       PostCategory: {
-        create: {
-          category: {
-            connect: {
-              id: 1,
-            },
+        create: [
+          {
+            categoryId: 1,
           },
-        },
+          {
+            categoryId: 3,
+          },
+          {
+            categoryId: 4,
+          },
+        ],
       },
     },
     include: {
