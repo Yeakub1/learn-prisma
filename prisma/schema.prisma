@@ -26,6 +26,7 @@ model User {
   username String   @unique
   email    String   @unique
   role     UserRole @default(user)
+  age      Int      @default(0)
   porfile  Porfile? //one to one relation
   post     Post[] // one to many relation
 
