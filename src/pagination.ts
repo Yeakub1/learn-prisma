@@ -25,7 +25,9 @@ const pagination = async () => {
   const shortedData = await prisma.post.findMany({
     orderBy: {
       title: "asc",
-    },
+      },
+      skip: 2,
+      take: 2,
     where: {
       title: "title 1",
     },
